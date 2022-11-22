@@ -1,0 +1,7 @@
+env/
+modules/__pycache__
+main/__pycache__
+__pycache__
+my-virtual-env
+venv
+Procfile

@@ -1,0 +1,264 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Challange Cloud Wazuh",
+    "version": "1.0.0",
+    "title": "Swagger Wazuh"
+  },
+  "host": "localhost:5000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "tasks"
+    },
+    {
+      "name": "users"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/tasks": {
+      "get": {
+        "tags": [
+          "tasks"
+        ],
+        "summary": "Get all information from tasks",
+        "description": "",
+        "operationId": "uploadFile",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "completed",
+            "in": "query",
+            "description": "True or false",
+            "required": false,
+            "type": "boolean",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "title",
+            "in": "query",
+            "description": "Title task",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "propertie": {
+                "type": "integer"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tasks/{id}": {
+      "get": {
+        "tags": [
+          "tasks"
+        ],
+        "summary": "Search for a task by its id",
+        "description": "",
+        "operationId": "id",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "Get Task by ID",
+            "required": true,
+            "type": "integer"
+          }
+        ]
+      }
+    },
+    "/users": {
+      "get": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Get the list of all users",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/tasks"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{user_id}": {
+      "get": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Search for a user by their user_id",
+        "description": "",
+        "operationId": "id",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "user_id",
+            "email": "Get User by ID",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "username": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                },
+                "address": {
+                  "type": "object"
+                },
+                "phone": {
+                  "type":"string"
+                },
+                "website": {
+                  "type": "string"
+                },
+                "company": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{user_id}/tasks": {
+      "get": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Retrieves all tasks from the specified user",
+        "description": "",
+        "operationId": "user_id",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "user_id",
+            "email": "Get User by ID",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "name": "completed",
+            "in": "query",
+            "description": "True or false",
+            "required": false,
+            "type": "boolean",
+            "allowEmptyValue": true
+          },
+          {
+            "name": "title",
+            "in": "query",
+            "description": "Title task",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "username": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                },
+                "address": {
+                  "type": "object"
+                },
+                "phone": {
+                  "type":"string"
+                },
+                "website": {
+                  "type": "string"
+                },
+                "company": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "tasks": {
+      "type": "object",
+      "properties": {
+        "total_items": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      }
+    }
+  }
+}
