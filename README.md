@@ -1,6 +1,3 @@
-**Depending on how you have the PATH configured, you should proceed to use 'python', in my case it is 'python', but in other cases it can be 'python3', 'python2'.
-(Same for pip)**
-
 - Install virtual env:
     * pip install virtual env
 - Create the virtual environment with virtual env:
